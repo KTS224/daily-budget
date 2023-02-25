@@ -14,8 +14,8 @@ struct DaySpentView: View {
         NavigationStack {
             VStack {
                 HStack {
-                    Button {
-                        print("내역 추가")
+                    NavigationLink {
+                        AddReceiptView()
                     } label: {
                         Image(systemName: "plus")
                     }

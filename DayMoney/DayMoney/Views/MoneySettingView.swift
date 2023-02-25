@@ -18,14 +18,12 @@ struct MoneySettingView: View {
                 TextField("용돈을 입력해 주세요.", text: $money)
                 
                 Button {
+                    UserDefaults.standard.set(Int(money), forKey: "총금액")
+                    moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
                     dismiss()
                 } label: {
                     Text("변경하기")
                 }
-                .simultaneousGesture(TapGesture().onEnded {
-                    UserDefaults.standard.set(Int(money), forKey: "총금액")
-                    moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
-                })
             }
             .padding()
         }
