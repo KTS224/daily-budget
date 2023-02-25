@@ -11,7 +11,13 @@ import SwiftUI
 struct DayMoneyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if (UserDefaults.standard.integer(forKey: "총금액")) < 1 {
+                MoneySettingView()
+                    .environmentObject(MoneyStore())
+            } else {
+                DaySpentView()
+                    .environmentObject(MoneyStore())
+            }
         }
     }
 }
