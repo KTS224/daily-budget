@@ -35,14 +35,18 @@ struct DaySpentView: View {
                         Image(systemName: "gearshape.fill")
                     }
                 }
-//                Text("\(UserDefaults.standard.integer(forKey: "총금액"))")
+                
                 Text("\(moneyStore.money)")
                 Spacer()
+                
+                List(Array(zip(moneyStore.spendMoneyHistory, moneyStore.spendContentsHistory)), id: \.self.0) { (money, content) in
+                    Text("-\(money) \(content)")
+                }
             }
             .padding()
         }
         .onAppear {
-            print("온어피;어")
+            print("데이 스펜트 뷰 온어피어")
         }
     }
 }
@@ -50,5 +54,6 @@ struct DaySpentView: View {
 struct DaySpentView_Previews: PreviewProvider {
     static var previews: some View {
         DaySpentView()
+            .environmentObject(MoneyStore())
     }
 }
