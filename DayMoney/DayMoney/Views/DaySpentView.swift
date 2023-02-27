@@ -70,13 +70,20 @@ struct DaySpentView: View {
                 UserDefaults.standard.set(moneyStore.money / (Int(moneyStore.이달의마지막일)! - Int(moneyStore.오늘날)! + 1), forKey: "오늘사용가능한돈")
                 moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
                 print("저장완료")
-            } else if moneyStore.앱을켰을때day != moneyStore.오늘날 {
+            } else if moneyStore.앱을켰을때day != moneyStore.오늘날 { // 다음날로 넘어갔을때 로직
                 print("날이바뀜")
                 UserDefaults.standard.set(moneyStore.오늘날, forKey: "앱을켰을때day")
                 UserDefaults.standard.set(moneyStore.money / (Int(moneyStore.이달의마지막일)! - Int(moneyStore.오늘날)! + 1), forKey: "오늘사용가능한돈")
                 moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
+                
+                // TODO: 사용한 돈, 사용 내역 초기화 해주기!
+                UserDefaults.standard.set([], forKey: "사용한돈")
+                UserDefaults.standard.set([], forKey: "사용내역")
                 print("update 완료")
             }
+        }
+        .refreshable {
+            
         }
     }
 }
