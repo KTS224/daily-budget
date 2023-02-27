@@ -19,6 +19,8 @@ class MoneyStore: ObservableObject {
         dateFormatter.dateFormat = "d"
     }
     
+    @Published var moneyHistory: [String] = UserDefaults.standard.array(forKey: "돈히스토리") as? [String] ?? []
+    @Published var contentHistory: [String] = UserDefaults.standard.array(forKey: "내역히스토리") as? [String] ?? []
     @Published var 앱을켰을때day: String = (UserDefaults.standard.string(forKey: "앱을켰을때day") ?? "저장안됨")
     @Published var money: Int = UserDefaults.standard.integer(forKey: "총금액")
     @Published var todayMoney: Int = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")

@@ -30,6 +30,11 @@ struct DaySpentView: View {
                     //                } label: {
                     //                    Image(systemName: "calendar")
                     //                }
+                    NavigationLink {
+                        HistoryView()
+                    } label: {
+                        Image(systemName: "list.bullet.clipboard")
+                    }
                     
                     NavigationLink {
                         SettingView()
@@ -71,8 +76,6 @@ struct DaySpentView: View {
                 moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
                 print("update 완료")
             }
-            print(moneyStore.spendMoneyHistory)
-            print(moneyStore.spendContentsHistory)
         }
     }
 }

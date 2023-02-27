@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EB8CE94129AC68210069D2D4 /* CurrentTimeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8CE94029AC68210069D2D4 /* CurrentTimeTestView.swift */; };
+		EB8CE94329ACA92C0069D2D4 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8CE94229ACA92C0069D2D4 /* HistoryView.swift */; };
 		EBA0F2ED29A9FCAF00462046 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0F2EC29A9FCAF00462046 /* CalendarView.swift */; };
 		EBA0F2EF29A9FDEE00462046 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0F2EE29A9FDEE00462046 /* SettingView.swift */; };
 		EBA0F2F129AA033C00462046 /* MoneyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0F2F029AA033C00462046 /* MoneyStore.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		EB8CE94029AC68210069D2D4 /* CurrentTimeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeTestView.swift; sourceTree = "<group>"; };
+		EB8CE94229ACA92C0069D2D4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		EBA0F2EC29A9FCAF00462046 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EBA0F2EE29A9FDEE00462046 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		EBA0F2F029AA033C00462046 /* MoneyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyStore.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				EBDB49F329A904DF00F8DE37 /* MoneySettingView.swift */,
 				EBDB49F529A90AAE00F8DE37 /* DaySpentView.swift */,
+				EB8CE94229ACA92C0069D2D4 /* HistoryView.swift */,
 				EBA0F2EE29A9FDEE00462046 /* SettingView.swift */,
 				EBA0F2EC29A9FCAF00462046 /* CalendarView.swift */,
 				EBA0F2F229AA048B00462046 /* AddReceiptView.swift */,
@@ -194,6 +197,7 @@
 				EBA0F2ED29A9FCAF00462046 /* CalendarView.swift in Sources */,
 				EBA0F2F129AA033C00462046 /* MoneyStore.swift in Sources */,
 				EBA0F2F329AA048B00462046 /* AddReceiptView.swift in Sources */,
+				EB8CE94329ACA92C0069D2D4 /* HistoryView.swift in Sources */,
 				EBDB49E329A9004600F8DE37 /* DayMoneyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

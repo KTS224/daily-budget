@@ -36,6 +36,17 @@ struct AddReceiptView: View {
                 tempContentArr.append(content)
                 UserDefaults.standard.set(tempContentArr, forKey: "사용내역")
                 moneyStore.spendContentsHistory = UserDefaults.standard.array(forKey: "사용내역") as? [String] ?? []
+                
+                var tempMoneyHistory = moneyStore.moneyHistory
+                tempMoneyHistory.append(money)
+                UserDefaults.standard.set(tempMoneyArr, forKey: "돈히스토리")
+                moneyStore.moneyHistory = UserDefaults.standard.array(forKey: "돈히스토리") as? [String] ?? []
+                
+                var tempContentHistory = moneyStore.contentHistory
+                tempContentHistory.append(content)
+                UserDefaults.standard.set(tempContentHistory, forKey: "내역히스토리")
+                moneyStore.contentHistory = UserDefaults.standard.array(forKey: "내역히스토리") as? [String] ?? []
+                
                 dismiss()
             } label: {
                 Text("추가하기")
