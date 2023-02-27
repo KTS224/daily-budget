@@ -16,23 +16,28 @@ struct CurrentTimeTestView: View {
         dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .long
         dateFormatter.timeStyle = .short
+        dateFormatter.dateFormat = "d"
     }
     
     var body: some View {
         VStack {
-            Text(date, formatter: dateFormatter) // "January 14, 2021 at 10:00 AM"
-            Text(Date(), style: .time)
-            Text(Date(), style: .date)
-            Text(Date(), style: .offset)
-            Text(Date(), style: .relative)
-            Text(Date(), style: .timer)
-            Text("\(Date())")
+            Group {
+                Text(date, formatter: dateFormatter) // "January 14, 2021 at 10:00 AM"
+                Text(Date(), style: .time)
+                Text(Date(), style: .date)
+                Text(Date(), style: .offset)
+                Text(Date(), style: .relative)
+                Text(Date(), style: .timer)
+                Text("\(Date())")
+            }
+            Spacer()
+            Group {
+                Text(Date().startOfMonth(), style: .date) // 현재 달의 첫번째 날
+                Text(Date().endOfMonth()-1, style: .date) // 현재 달의 마지막 날
+                
+                Text(dateFormatter.string(from: Date().endOfMonth()-1)) // 이번달의 마지막날
+                Text(dateFormatter.string(from: Date())) // 현재 날
+            }
         }
-    }
-}
-
-struct CurrentTimeTestView_Previews: PreviewProvider {
-    static var previews: some View {
-        CurrentTimeTestView()
     }
 }

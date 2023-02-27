@@ -24,6 +24,9 @@ struct AddReceiptView: View {
                 UserDefaults.standard.set(moneyStore.money - (Int(money) ?? 0), forKey: "총금액")
                 moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
                 
+                UserDefaults.standard.set(moneyStore.todayMoney - (Int(money) ?? 0), forKey: "오늘사용가능한돈")
+                moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
+                
                 var tempMoneyArr: [String] = moneyStore.spendMoneyHistory
                 tempMoneyArr.append(money)
                 UserDefaults.standard.set(tempMoneyArr, forKey: "사용한돈")
@@ -40,6 +43,8 @@ struct AddReceiptView: View {
         }
         .padding()
         .onAppear {
+            print(moneyStore.todayMoney)
+            print(UserDefaults.standard.integer(forKey: "오늘사용가능한돈"))
             print(moneyStore.spendMoneyHistory)
             print(moneyStore.spendContentsHistory)
         }

@@ -38,7 +38,7 @@ struct DaySpentView: View {
                     }
                 }
                 
-                Text(currentTitleDisplay ? "\(Date(), style: .date)" : "\(moneyStore.money) ₩")
+                Text(currentTitleDisplay ? "\(Date(), style: .date)" : "오늘은 \(moneyStore.todayMoney) ₩ 사용가능합니다")
                     .font(.headline)
                     .monospaced()
                     .onTapGesture {
@@ -57,7 +57,23 @@ struct DaySpentView: View {
             .padding()
         }
         .onAppear {
-            print("데이 스펜트 뷰 온어피어")
+            print("전체돈 : \(UserDefaults.standard.integer(forKey: "총금액"))")
+            // 초기 day 저장, 날이 변했을때 오늘 사용가능한 돈 업데이트 로직
+            if moneyStore.앱을켰을때day == "저장안됨" {
+                UserDefaults.standard.set(moneyStore.오늘날, forKey: "앱을켰을때day")
+                UserDefaults.standard.set(moneyStore.money / (Int(moneyStore.이달의마지막일)! - Int(moneyStore.오늘날)! + 1), forKey: "오늘사용가능한돈")
+                moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
+                print("저장완료")
+            } else if moneyStore.앱을켰을때day != moneyStore.오늘날 {
+                print("날이바뀜")
+                UserDefaults.standard.set(moneyStore.오늘날, forKey: "앱을켰을때day")
+                UserDefaults.standard.set(moneyStore.money / (Int(moneyStore.이달의마지막일)! - Int(moneyStore.오늘날)! + 1), forKey: "오늘사용가능한돈")
+                moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
+                print("update 완료")
+            }
+            print(moneyStore.spendMoneyHistory)
+            print(moneyStore.spendContentsHistory)
+
         }
     }
 }
