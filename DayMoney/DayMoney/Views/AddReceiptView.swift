@@ -39,7 +39,7 @@ struct AddReceiptView: View {
                 
                 var tempMoneyHistory = moneyStore.moneyHistory
                 tempMoneyHistory.append(money)
-                UserDefaults.standard.set(tempMoneyArr, forKey: "돈히스토리")
+                UserDefaults.standard.set(tempMoneyHistory, forKey: "돈히스토리")
                 moneyStore.moneyHistory = UserDefaults.standard.array(forKey: "돈히스토리") as? [String] ?? []
                 
                 var tempContentHistory = moneyStore.contentHistory
