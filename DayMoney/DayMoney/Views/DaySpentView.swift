@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DaySpentView: View {
     @EnvironmentObject var moneyStore: MoneyStore
+    // TODO: 변수명 수정 예정, (쓸수있는돈, 날짜, 총 금액) 표시 예정
+    @State private var currentTitleDisplay = false
     
     var body: some View {
         NavigationStack {
@@ -36,11 +38,20 @@ struct DaySpentView: View {
                     }
                 }
                 
-                Text("\(moneyStore.money)")
+                Text(currentTitleDisplay ? "\(Date(), style: .date)" : "\(moneyStore.money) ₩")
+                    .font(.headline)
+                    .monospaced()
+                    .onTapGesture {
+                        currentTitleDisplay.toggle()
+                    }
                 Spacer()
                 
                 List(Array(zip(moneyStore.spendMoneyHistory, moneyStore.spendContentsHistory)), id: \.self.0) { (money, content) in
-                    Text("-\(money) \(content)")
+                    HStack {
+                        Text("-\(money) ₩ ")
+                        Spacer()
+                        Text("\(content)")
+                    }
                 }
             }
             .padding()

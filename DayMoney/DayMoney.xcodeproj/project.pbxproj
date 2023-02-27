@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB8CE94129AC68210069D2D4 /* CurrentTimeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8CE94029AC68210069D2D4 /* CurrentTimeTestView.swift */; };
 		EBA0F2ED29A9FCAF00462046 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0F2EC29A9FCAF00462046 /* CalendarView.swift */; };
 		EBA0F2EF29A9FDEE00462046 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0F2EE29A9FDEE00462046 /* SettingView.swift */; };
 		EBA0F2F129AA033C00462046 /* MoneyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0F2F029AA033C00462046 /* MoneyStore.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB8CE94029AC68210069D2D4 /* CurrentTimeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeTestView.swift; sourceTree = "<group>"; };
 		EBA0F2EC29A9FCAF00462046 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		EBA0F2EE29A9FDEE00462046 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		EBA0F2F029AA033C00462046 /* MoneyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyStore.swift; sourceTree = "<group>"; };
@@ -42,6 +44,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB8CE93F29AC67E80069D2D4 /* TEST */ = {
+			isa = PBXGroup;
+			children = (
+				EB8CE94029AC68210069D2D4 /* CurrentTimeTestView.swift */,
+			);
+			path = TEST;
+			sourceTree = "<group>";
+		};
 		EBDB49D629A9004600F8DE37 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +73,7 @@
 			children = (
 				EBDB49E229A9004600F8DE37 /* DayMoneyApp.swift */,
 				EBA0F2F029AA033C00462046 /* MoneyStore.swift */,
+				EB8CE93F29AC67E80069D2D4 /* TEST */,
 				EBDB49F129A901B600F8DE37 /* Models */,
 				EBDB49F029A901AD00F8DE37 /* Views */,
 				EBDB49F229A901BB00F8DE37 /* ViewModels */,
@@ -177,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBDB49F629A90AAE00F8DE37 /* DaySpentView.swift in Sources */,
+				EB8CE94129AC68210069D2D4 /* CurrentTimeTestView.swift in Sources */,
 				EBA0F2EF29A9FDEE00462046 /* SettingView.swift in Sources */,
 				EBDB49F429A904DF00F8DE37 /* MoneySettingView.swift in Sources */,
 				EBA0F2ED29A9FCAF00462046 /* CalendarView.swift in Sources */,
