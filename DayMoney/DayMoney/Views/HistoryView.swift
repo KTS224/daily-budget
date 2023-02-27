@@ -11,7 +11,7 @@ struct HistoryView: View {
     @EnvironmentObject var moneyStore: MoneyStore
     
     var body: some View {
-        List(Array(zip(moneyStore.moneyHistory, moneyStore.contentHistory).enumerated()), id: \.offset) { index, element in
+        List(Array(zip(moneyStore.moneyHistory, moneyStore.contentHistory).enumerated()).reversed(), id: \.offset) { index, element in
             HStack {
                 Text("-\(element.0) ₩ ")
                 Spacer()
@@ -20,6 +20,9 @@ struct HistoryView: View {
         }
         .listStyle(.inset)
         .navigationTitle("이전 사용 내역")
+        .onAppear {
+            print(Array(zip(moneyStore.moneyHistory, moneyStore.contentHistory).enumerated()))
+        }
     }
 }
 

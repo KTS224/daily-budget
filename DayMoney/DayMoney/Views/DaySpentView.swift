@@ -51,7 +51,7 @@ struct DaySpentView: View {
                     }
                 Spacer()
                 
-                List(Array(zip(moneyStore.spendMoneyHistory, moneyStore.spendContentsHistory).enumerated()), id: \.offset) { (_, moneyStore) in
+                List(Array(zip(moneyStore.spendMoneyHistory, moneyStore.spendContentsHistory).enumerated()).reversed(), id: \.offset) { (_, moneyStore) in
                     HStack {
                         Text("-\(moneyStore.0) ₩ ")
                         Spacer()
@@ -77,13 +77,14 @@ struct DaySpentView: View {
                 moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
                 
                 // TODO: 사용한 돈, 사용 내역 초기화 해주기!
-                UserDefaults.standard.set([], forKey: "사용한돈")
-                UserDefaults.standard.set([], forKey: "사용내역")
+                // 이렇게 해도 안바뀌네??
+                // 온보딩뷰에 온어피어를 걸어서 한번 필터링 된 뷰로 넘어가게 만들어보기!
+                UserDefaults.standard.set(nil, forKey: "사용한돈")
+                UserDefaults.standard.set(nil, forKey: "사용내역")
+                moneyStore.spendMoneyHistory = UserDefaults.standard.array(forKey: "사용한돈") as? [String] ?? []
+                moneyStore.spendContentsHistory = UserDefaults.standard.array(forKey: "사용내역") as? [String] ?? []
                 print("update 완료")
             }
-        }
-        .refreshable {
-            
         }
     }
 }
