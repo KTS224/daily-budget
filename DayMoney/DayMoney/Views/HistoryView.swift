@@ -18,6 +18,8 @@ struct HistoryView: View {
                 Text(element.1)
             }
         }
+        .listStyle(.inset)
+        .navigationTitle("이전 사용 내역")
     }
 }
 

@@ -58,6 +58,7 @@ struct DaySpentView: View {
                         Text("\(moneyStore.1)")
                     }
                 }
+                .listStyle(.inset)
             }
             .padding()
         }

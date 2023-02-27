@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingView: View {
     @State private var isDarkMode = false
+    
     var body: some View {
         List {
             NavigationLink {
@@ -22,6 +23,7 @@ struct SettingView: View {
             Text("라이선스")
             Toggle("다크모드", isOn: $isDarkMode)
         }
+        .navigationTitle("설정")
     }
 }
 
