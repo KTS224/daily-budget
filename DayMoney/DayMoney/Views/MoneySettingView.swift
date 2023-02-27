@@ -24,6 +24,7 @@ struct MoneySettingView: View {
                 } label: {
                     Text("변경하기")
                 }
+                .disabled(money.value == "")
             }
             .padding()
         }

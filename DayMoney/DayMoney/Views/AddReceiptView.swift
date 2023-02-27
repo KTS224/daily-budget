@@ -52,6 +52,7 @@ struct AddReceiptView: View {
             } label: {
                 Text("추가하기")
             }
+            .disabled(money.value == "" || content == "")
         }
         .padding()
         .onAppear {

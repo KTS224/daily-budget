@@ -51,11 +51,11 @@ struct DaySpentView: View {
                     }
                 Spacer()
                 
-                List(Array(zip(moneyStore.spendMoneyHistory, moneyStore.spendContentsHistory).enumerated()).reversed(), id: \.offset) { (_, moneyStore) in
+                List(Array(zip(moneyStore.spendMoneyHistory, moneyStore.spendContentsHistory).enumerated()).reversed(), id: \.offset) { (_, element) in
                     HStack {
-                        Text("-\(moneyStore.0) ₩ ")
+                        Text("-\(element.0) ₩ ")
                         Spacer()
-                        Text("\(moneyStore.1)")
+                        Text("\(element.1)")
                     }
                 }
                 .listStyle(.inset)
