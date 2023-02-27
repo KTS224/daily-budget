@@ -48,3 +48,15 @@ func toLocalTime() -> Date {
     let seconds     = TimeInterval(timezone.secondsFromGMT(for: self))
     return Date(timeInterval: seconds, since: self)
 }}
+
+class NumbersOnly: ObservableObject {
+    @Published var value = "" {
+        didSet {
+            let filtered = value.filter { $0.isNumber }
+            
+            if value != filtered {
+                value = filtered
+            }
+        }
+    }
+}

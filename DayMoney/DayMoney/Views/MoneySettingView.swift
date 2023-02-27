@@ -9,16 +9,16 @@ import SwiftUI
 
 struct MoneySettingView: View {
     @EnvironmentObject var moneyStore: MoneyStore
-    @State private var money: String = ""
+    @ObservedObject var money = NumbersOnly()
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack {
             VStack {
-                TextField("용돈을 입력해 주세요.", text: $money)
+                TextField("용돈을 입력해 주세요.", text: $money.value)
                 
                 Button {
-                    UserDefaults.standard.set(Int(money), forKey: "총금액")
+                    UserDefaults.standard.set(Int(money.value), forKey: "총금액")
                     moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
                     dismiss()
                 } label: {
