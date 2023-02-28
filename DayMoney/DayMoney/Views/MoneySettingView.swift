@@ -36,6 +36,17 @@ struct MoneySettingView: View {
         .padding()
         .alert("모든 기록이 사라집니다. 정말 돈을 변경하시겠습니까?", isPresented: $isShowingAlert) {
             Button("바꾼다", role: .destructive) {
+                /// 모든 기록 초기화
+                UserDefaults.standard.set([], forKey: "사용한돈")
+                UserDefaults.standard.set([], forKey: "사용내역")
+                UserDefaults.standard.set([], forKey: "돈히스토리")
+                UserDefaults.standard.set([], forKey: "내역히스토리")
+                
+                moneyStore.spendMoneyHistory = UserDefaults.standard.array(forKey: "사용한돈") as? [String] ?? []
+                moneyStore.spendContentsHistory = UserDefaults.standard.array(forKey: "사용내역") as? [String] ?? []
+                moneyStore.moneyHistory = UserDefaults.standard.array(forKey: "돈히스토리") as? [String] ?? []
+                moneyStore.contentHistory = UserDefaults.standard.array(forKey: "내역히스토리") as? [String] ?? []
+                
                 UserDefaults.standard.set(Int(money.value), forKey: "총금액")
                 moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
                 dismiss()

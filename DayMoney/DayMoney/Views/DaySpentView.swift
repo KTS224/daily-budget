@@ -70,7 +70,7 @@ struct DaySpentView: View {
                 .padding()
             }
             .onAppear {
-                print(isShowingOnboardingView)
+                print(moneyStore.spendContentsHistory)
                 print("전체돈 : \(UserDefaults.standard.integer(forKey: "총금액"))")
                 // 초기 day 저장, 날이 변했을때 오늘 사용가능한 돈 업데이트 로직
                 if moneyStore.앱을켰을때day == "저장안됨" {

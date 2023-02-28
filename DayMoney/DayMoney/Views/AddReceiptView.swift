@@ -61,6 +61,9 @@ struct AddReceiptView: View {
             print(moneyStore.spendMoneyHistory)
             print(moneyStore.spendContentsHistory)
         }
+        .onDisappear {
+            print(moneyStore.spendContentsHistory)
+        }
         .navigationTitle("사용 내역 추가")
     }
 }
