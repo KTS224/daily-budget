@@ -12,23 +12,35 @@ struct MoneySettingView: View {
     @ObservedObject var money = NumbersOnly()
     @Binding var isShowingOnboardingView: Bool
     @Environment(\.dismiss) private var dismiss
+    @State private var isShowingAlert = false
     
     var body: some View {
         VStack {
             TextField("용돈을 입력해 주세요.", text: $money.value)
             
             Button {
-                UserDefaults.standard.set(Int(money.value), forKey: "총금액")
-                moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
-                UserDefaults.standard.set(false, forKey: "isShowingOnboardingView")
-                isShowingOnboardingView = false
-                dismiss()
+                if !isShowingOnboardingView {
+                    self.isShowingAlert = true
+                } else {
+                    UserDefaults.standard.set(Int(money.value), forKey: "총금액")
+                    moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
+                    UserDefaults.standard.set(false, forKey: "isShowingOnboardingView")
+                    isShowingOnboardingView = false
+                    dismiss()
+                }
             } label: {
                 Text("변경하기")
             }
             .disabled(money.value == "")
         }
         .padding()
+        .alert("모든 기록이 사라집니다. 정말 돈을 변경하시겠습니까?", isPresented: $isShowingAlert) {
+            Button("바꾼다", role: .destructive) {
+                UserDefaults.standard.set(Int(money.value), forKey: "총금액")
+                moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
+                dismiss()
+            }
+        }
         .onDisappear {
             /// 사용할 용돈을 변경했을경우 홈에 나오는 금액도 변경해주기 위한 로직
             UserDefaults.standard.set(moneyStore.money / (Int(moneyStore.이달의마지막일)! - Int(moneyStore.오늘날)! + 1), forKey: "오늘사용가능한돈")
