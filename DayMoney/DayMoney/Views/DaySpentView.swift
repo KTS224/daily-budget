@@ -58,11 +58,78 @@ struct DaySpentView: View {
                         }
                     Spacer()
                     
-                    List(Array(zip(moneyStore.spendMoneyHistory, moneyStore.spendContentsHistory).enumerated()).reversed(), id: \.offset) { (_, element) in
-                        HStack {
-                            Text("-\(element.0) ₩ ")
-                            Spacer()
-                            Text("\(element.1)")
+                    List {
+                        ForEach(Array(zip(moneyStore.spendMoneyHistory, moneyStore.spendContentsHistory).enumerated()).reversed(), id: \.offset) { (_, element) in
+                            HStack {
+                                Text("-\(element.0) ₩ ")
+                                Spacer()
+                                Text("\(element.1)")
+                            }
+//                            .contextMenu {
+//                                Button {
+//                                    print("삭제")
+//
+//                                    UserDefaults.standard.set(moneyStore.money - (Int(element.0) ?? 0), forKey: "총금액")
+//                                    moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
+//
+//                                    UserDefaults.standard.set(moneyStore.todayMoney - (Int(element.0) ?? 0), forKey: "오늘사용가능한돈")
+//                                    moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
+//
+//                                    // TODO: 제거로 바꾸기
+//                                    var tempMoneyArr: [String] = moneyStore.spendMoneyHistory
+//                                    tempMoneyArr.append(element.0)
+//                                    UserDefaults.standard.set(tempMoneyArr, forKey: "사용한돈")
+//                                    moneyStore.spendMoneyHistory = UserDefaults.standard.array(forKey: "사용한돈") as? [String] ?? []
+//
+//                                    var tempContentArr: [String] = moneyStore.spendContentsHistory
+//                                    tempContentArr.append(element.1)
+//                                    UserDefaults.standard.set(tempContentArr, forKey: "사용내역")
+//                                    moneyStore.spendContentsHistory = UserDefaults.standard.array(forKey: "사용내역") as? [String] ?? []
+//
+//                                    var tempMoneyHistory = moneyStore.moneyHistory
+//                                    tempMoneyHistory.append(element.0)
+//                                    UserDefaults.standard.set(tempMoneyHistory, forKey: "돈히스토리")
+//                                    moneyStore.moneyHistory = UserDefaults.standard.array(forKey: "돈히스토리") as? [String] ?? []
+//
+//                                    var tempContentHistory = moneyStore.contentHistory
+//                                    tempContentHistory.append(element.1)
+//                                    UserDefaults.standard.set(tempContentHistory, forKey: "내역히스토리")
+//                                    moneyStore.contentHistory = UserDefaults.standard.array(forKey: "내역히스토리") as? [String] ?? []
+//                                } label: {
+//                                    Text("Remove")
+//                                    Image(systemName: "trash")
+//                                }
+//                            }
+                        }
+                        .onDelete { IndexSet in
+                            print("삭제")
+                            var i: Int = IndexSet.first!
+                            print(i)
+                            UserDefaults.standard.set(moneyStore.money + (Int(moneyStore.spendMoneyHistory[i]) ?? 0), forKey: "총금액")
+                            moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
+
+                            UserDefaults.standard.set(moneyStore.todayMoney + (Int(moneyStore.spendMoneyHistory[i]) ?? 0), forKey: "오늘사용가능한돈")
+                            moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
+                            
+                            var tempMoneyArr: [String] = moneyStore.spendMoneyHistory
+                            tempMoneyArr.remove(at: i)
+                            UserDefaults.standard.set(tempMoneyArr, forKey: "사용한돈")
+                            moneyStore.spendMoneyHistory = UserDefaults.standard.array(forKey: "사용한돈") as? [String] ?? []
+
+                            var tempContentArr: [String] = moneyStore.spendContentsHistory
+                            tempContentArr.remove(at: i)
+                            UserDefaults.standard.set(tempContentArr, forKey: "사용내역")
+                            moneyStore.spendContentsHistory = UserDefaults.standard.array(forKey: "사용내역") as? [String] ?? []
+
+                            var tempMoneyHistory = moneyStore.moneyHistory
+                            tempMoneyHistory.remove(at: i)
+                            UserDefaults.standard.set(tempMoneyHistory, forKey: "돈히스토리")
+                            moneyStore.moneyHistory = UserDefaults.standard.array(forKey: "돈히스토리") as? [String] ?? []
+
+                            var tempContentHistory = moneyStore.contentHistory
+                            tempContentHistory.remove(at: i)
+                            UserDefaults.standard.set(tempContentHistory, forKey: "내역히스토리")
+                            moneyStore.contentHistory = UserDefaults.standard.array(forKey: "내역히스토리") as? [String] ?? []
                         }
                     }
                     .listStyle(.inset)
@@ -70,7 +137,10 @@ struct DaySpentView: View {
                 .padding()
             }
             .onAppear {
+                print(moneyStore.spendMoneyHistory)
                 print(moneyStore.spendContentsHistory)
+                print(moneyStore.moneyHistory)
+                print(moneyStore.contentHistory)
                 print("전체돈 : \(UserDefaults.standard.integer(forKey: "총금액"))")
                 // 초기 day 저장, 날이 변했을때 오늘 사용가능한 돈 업데이트 로직
                 if moneyStore.앱을켰을때day == "저장안됨" {
