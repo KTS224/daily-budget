@@ -23,9 +23,6 @@ struct DayMoneyApp: App {
 //            UserDefaults.standard.set(MoneyStore().money / (Int(MoneyStore().이달의마지막일)! - Int(MoneyStore().오늘날)! + 1), forKey: "오늘사용가능한돈")
 //            MoneyStore().todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
             
-            // TODO: 사용한 돈, 사용 내역 초기화 해주기!
-            // 이렇게 해도 안바뀌네??
-            // 온보딩뷰에 온어피어를 걸어서 한번 필터링 된 뷰로 넘어가게 만들어보기!
             UserDefaults.standard.set(nil, forKey: "사용한돈")
             UserDefaults.standard.set(nil, forKey: "사용내역")
             MoneyStore().spendMoneyHistory = UserDefaults.standard.array(forKey: "사용한돈") as? [String] ?? []
@@ -37,13 +34,8 @@ struct DayMoneyApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if (UserDefaults.standard.integer(forKey: "총금액")) < 1 {
-                MoneySettingView()
-                    .environmentObject(MoneyStore())
-            } else {
                 DaySpentView()
                     .environmentObject(MoneyStore())
-            }
         }
     }
 }

@@ -13,7 +13,7 @@ struct SettingView: View {
     var body: some View {
         List {
             NavigationLink {
-                MoneySettingView()
+                MoneySettingView(isShowingOnboardingView: .constant(false))
             } label: {
                 Text("금액변경")
             }
