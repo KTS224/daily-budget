@@ -18,10 +18,10 @@ struct SettingView: View {
                 Text("금액변경")
             }
 
-            Text("테마변경")
-            Text("언어변경")
-            Text("라이선스")
-            Toggle("다크모드", isOn: $isDarkMode)
+//            Text("테마변경")
+//            Text("언어변경")
+//            Text("라이선스")
+//            Toggle("다크모드", isOn: $isDarkMode)
         }
         .navigationTitle("설정")
     }
