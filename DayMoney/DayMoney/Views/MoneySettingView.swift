@@ -25,6 +25,8 @@ struct MoneySettingView: View {
                     UserDefaults.standard.set(Int(money.value), forKey: "총금액")
                     moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
                     UserDefaults.standard.set(false, forKey: "isShowingOnboardingView")
+                    UserDefaults.standard.set(false, forKey: "첫번째1일인가")
+                    print(UserDefaults.standard.bool(forKey: "첫번째1일인가"))
                     isShowingOnboardingView = false
                     dismiss()
                 }

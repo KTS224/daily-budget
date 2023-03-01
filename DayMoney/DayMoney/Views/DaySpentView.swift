@@ -12,12 +12,18 @@ struct DaySpentView: View {
     // TODO: 변수명 수정 예정, (쓸수있는돈, 날짜, 총 금액) 표시 예정
     @State private var currentTitleDisplay = false
     @State var isShowingOnboardingView = UserDefaults.standard.object(forKey: "isShowingOnboardingView") as? Bool ?? true
+    @State var 첫번째1일인가 = UserDefaults.standard.object(forKey: "첫번째1일인가") as? Bool ?? false
     
     var body: some View {
         if isShowingOnboardingView {
             MoneySettingView(isShowingOnboardingView: $isShowingOnboardingView)
                 .onAppear {
-                    print(isShowingOnboardingView)
+                    print("처음 사용자입니다. 돈을 세팅해주세요.")
+                }
+        } else if 첫번째1일인가 {
+            MoneySettingView(isShowingOnboardingView: $첫번째1일인가)
+                .onAppear {
+                    print("1일입니다. 돈을 다시 세팅해주세요.")
                 }
         } else {
             NavigationStack {
@@ -65,46 +71,10 @@ struct DaySpentView: View {
                                 Spacer()
                                 Text("\(element.1)")
                             }
-//                            .contextMenu {
-//                                Button {
-//                                    print("삭제")
-//
-//                                    UserDefaults.standard.set(moneyStore.money - (Int(element.0) ?? 0), forKey: "총금액")
-//                                    moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
-//
-//                                    UserDefaults.standard.set(moneyStore.todayMoney - (Int(element.0) ?? 0), forKey: "오늘사용가능한돈")
-//                                    moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
-//
-//                                    // TODO: 제거로 바꾸기
-//                                    var tempMoneyArr: [String] = moneyStore.spendMoneyHistory
-//                                    tempMoneyArr.append(element.0)
-//                                    UserDefaults.standard.set(tempMoneyArr, forKey: "사용한돈")
-//                                    moneyStore.spendMoneyHistory = UserDefaults.standard.array(forKey: "사용한돈") as? [String] ?? []
-//
-//                                    var tempContentArr: [String] = moneyStore.spendContentsHistory
-//                                    tempContentArr.append(element.1)
-//                                    UserDefaults.standard.set(tempContentArr, forKey: "사용내역")
-//                                    moneyStore.spendContentsHistory = UserDefaults.standard.array(forKey: "사용내역") as? [String] ?? []
-//
-//                                    var tempMoneyHistory = moneyStore.moneyHistory
-//                                    tempMoneyHistory.append(element.0)
-//                                    UserDefaults.standard.set(tempMoneyHistory, forKey: "돈히스토리")
-//                                    moneyStore.moneyHistory = UserDefaults.standard.array(forKey: "돈히스토리") as? [String] ?? []
-//
-//                                    var tempContentHistory = moneyStore.contentHistory
-//                                    tempContentHistory.append(element.1)
-//                                    UserDefaults.standard.set(tempContentHistory, forKey: "내역히스토리")
-//                                    moneyStore.contentHistory = UserDefaults.standard.array(forKey: "내역히스토리") as? [String] ?? []
-//                                } label: {
-//                                    Text("Remove")
-//                                    Image(systemName: "trash")
-//                                }
-//                            }
                         }
                         .onDelete { IndexSet in
                             print("삭제")
-                            var i: Int = IndexSet.first!
-                            print(i)
+                            let i: Int = IndexSet.first!
                             UserDefaults.standard.set(moneyStore.money + (Int(moneyStore.spendMoneyHistory[i]) ?? 0), forKey: "총금액")
                             moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
 
@@ -137,10 +107,10 @@ struct DaySpentView: View {
                 .padding()
             }
             .onAppear {
-                print(moneyStore.spendMoneyHistory)
-                print(moneyStore.spendContentsHistory)
-                print(moneyStore.moneyHistory)
-                print(moneyStore.contentHistory)
+//                print(moneyStore.spendMoneyHistory)
+//                print(moneyStore.spendContentsHistory)
+//                print(moneyStore.moneyHistory)
+//                print(moneyStore.contentHistory)
                 print("전체돈 : \(UserDefaults.standard.integer(forKey: "총금액"))")
                 // 초기 day 저장, 날이 변했을때 오늘 사용가능한 돈 업데이트 로직
                 if moneyStore.앱을켰을때day == "저장안됨" {
@@ -149,19 +119,19 @@ struct DaySpentView: View {
                     moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
                     print("저장완료")
                 } else if moneyStore.앱을켰을때day != moneyStore.오늘날 { // 다음날로 넘어갔을때 로직
-                    print("날이바뀜")
-                    UserDefaults.standard.set(moneyStore.오늘날, forKey: "앱을켰을때day")
-                    UserDefaults.standard.set(moneyStore.money / (Int(moneyStore.이달의마지막일)! - Int(moneyStore.오늘날)! + 1), forKey: "오늘사용가능한돈")
-                    moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
+                    print("날이바뀜 온어피어")
+//                    UserDefaults.standard.set(moneyStore.오늘날, forKey: "앱을켰을때day")
+//                    UserDefaults.standard.set(moneyStore.money / (Int(moneyStore.이달의마지막일)! - Int(moneyStore.오늘날)! + 1), forKey: "오늘사용가능한돈")
+//                    moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
                     
                     // TODO: 사용한 돈, 사용 내역 초기화 해주기!
                     // 이렇게 해도 안바뀌네??
                     // 온보딩뷰에 온어피어를 걸어서 한번 필터링 된 뷰로 넘어가게 만들어보기!
-                    UserDefaults.standard.set(nil, forKey: "사용한돈")
-                    UserDefaults.standard.set(nil, forKey: "사용내역")
-                    moneyStore.spendMoneyHistory = UserDefaults.standard.array(forKey: "사용한돈") as? [String] ?? []
-                    moneyStore.spendContentsHistory = UserDefaults.standard.array(forKey: "사용내역") as? [String] ?? []
-                    print("update 완료")
+//                    UserDefaults.standard.set(nil, forKey: "사용한돈")
+//                    UserDefaults.standard.set(nil, forKey: "사용내역")
+//                    moneyStore.spendMoneyHistory = UserDefaults.standard.array(forKey: "사용한돈") as? [String] ?? []
+//                    moneyStore.spendContentsHistory = UserDefaults.standard.array(forKey: "사용내역") as? [String] ?? []
+//                    print("update 완료")
                 }
             }
         }
