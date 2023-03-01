@@ -33,7 +33,7 @@ struct MoneySettingView: View {
             } label: {
                 Text("변경하기")
             }
-            .disabled(money.value == "")
+            .disabled(money.value == "" || money.value.prefix(1) == "0")
         }
         .padding()
         .alert("모든 기록이 사라집니다. 정말 돈을 변경하시겠습니까?", isPresented: $isShowingAlert) {
