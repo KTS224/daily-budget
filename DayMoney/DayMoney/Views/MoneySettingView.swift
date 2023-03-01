@@ -16,7 +16,19 @@ struct MoneySettingView: View {
     
     var body: some View {
         VStack {
-            TextField("용돈을 입력해 주세요.", text: $money.value)
+            Text("이번 달 사용할 목표 금액이 얼마인가요?")
+                .bold()
+                .font(.system(size: 20))
+            HStack {
+                TextField("10000", text: $money.value)
+                    .padding(10)
+                    .border(Color.black.opacity(0.3))
+                    .keyboardType(.decimalPad)
+                Spacer()
+                Text("원")
+            }
+            .padding(.vertical, 30)
+            .padding(.horizontal, 110)
             
             Button {
                 if !isShowingOnboardingView {
@@ -31,7 +43,12 @@ struct MoneySettingView: View {
                     dismiss()
                 }
             } label: {
-                Text("변경하기")
+                Text("설정하기")
+                    .foregroundColor(money.value == "" || money.value.prefix(1) == "0" ? .secondary : .black)
+                    .font(.system(size: 20))
+                    .frame(width: UIScreen.main.bounds.width - 60, height: 48)
+                    .background(money.value == "" || money.value.prefix(1) == "0" ? Color.gray : Color.orange)
+                    .cornerRadius(10)
             }
             .disabled(money.value == "" || money.value.prefix(1) == "0")
         }

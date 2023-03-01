@@ -15,10 +15,24 @@ struct AddReceiptView: View {
     
     var body: some View {
         VStack {
-            TextField("사용한 돈을 입력해주세요.", text: $money.value)
-                .keyboardType(.decimalPad)
+            Text("무엇을 사는데 얼마를 사용하셨나요?")
+                .bold()
+                .font(.system(size: 20))
+                .padding(.bottom, 80)
             
-            TextField("사용 내역을 입력해주세요.", text: $content)
+            HStack {
+                TextField(" 1000", text: $money.value)
+                    .border(Color.black.opacity(0.3))
+                    .keyboardType(.decimalPad)
+                    .frame(width: 100)
+                Text("원")
+                Spacer()
+            }
+            
+            TextField("길가다가 붕어빵 사먹었다.", text: $content)
+                .frame(height: 100)
+                .padding(10)
+                .border(Color.black.opacity(0.3))
             
             Button {
                 print("추가")
@@ -51,6 +65,12 @@ struct AddReceiptView: View {
                 dismiss()
             } label: {
                 Text("추가하기")
+                    .foregroundColor(money.value == "" || content == "" || money.value.prefix(1) == "0" ? .secondary : .black)
+                    .font(.system(size: 20))
+                    .frame(width: UIScreen.main.bounds.width - 30, height: 48)
+                    .background(money.value == "" || content == "" || money.value.prefix(1) == "0" ? Color.gray : Color.orange)
+                    .cornerRadius(10)
+                    .padding()
             }
             .disabled(money.value == "" || content == "" || money.value.prefix(1) == "0")
         }
@@ -71,5 +91,6 @@ struct AddReceiptView: View {
 struct AddReceiptView_Previews: PreviewProvider {
     static var previews: some View {
         AddReceiptView()
+            .environmentObject(MoneyStore())
     }
 }
