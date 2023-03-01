@@ -11,18 +11,24 @@ struct HistoryView: View {
     @EnvironmentObject var moneyStore: MoneyStore
     
     var body: some View {
-        List(Array(zip(moneyStore.moneyHistory, moneyStore.contentHistory).enumerated()).reversed(), id: \.offset) { index, element in
-            HStack {
-                Text("-\(element.0) ₩ ")
-                Spacer()
-                Text(element.1)
+        if moneyStore.moneyHistory.count == 0 {
+            HistoryEmptyView()
+                .navigationTitle("이전 사용 내역")
+        } else {
+            List(Array(zip(moneyStore.moneyHistory, moneyStore.contentHistory).enumerated()).reversed(), id: \.offset) { index, element in
+                HStack {
+                    Text("-\(element.0) ₩ ")
+                    Spacer()
+                    Text(element.1)
+                }
+            }
+            .listStyle(.inset)
+            .navigationTitle("이전 사용 내역")
+            .onAppear {
+//                print(Array(zip(moneyStore.moneyHistory, moneyStore.contentHistory).enumerated()))
             }
         }
-        .listStyle(.inset)
-        .navigationTitle("이전 사용 내역")
-        .onAppear {
-            print(Array(zip(moneyStore.moneyHistory, moneyStore.contentHistory).enumerated()))
-        }
+    
     }
 }
 

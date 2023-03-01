@@ -64,45 +64,51 @@ struct DaySpentView: View {
                         }
                     Spacer()
                     
-                    List {
-                        ForEach(Array(zip(moneyStore.spendMoneyHistory, moneyStore.spendContentsHistory).enumerated()).reversed(), id: \.offset) { (_, element) in
-                            HStack {
-                                Text("-\(element.0) ₩ ")
-                                Spacer()
-                                Text("\(element.1)")
+                    if moneyStore.spendMoneyHistory.count == 0 {
+                        TodayEmptyView()
+                    } else {
+                        List {
+                            ForEach(Array(zip(moneyStore.spendMoneyHistory, moneyStore.spendContentsHistory).enumerated()).reversed(), id: \.offset) { (_, element) in
+                                HStack {
+                                    Text("-\(element.0) ₩ ")
+                                    Spacer()
+                                    Text("\(element.1)")
+                                }
+                            }
+                            .onDelete { IndexSet in
+                                print("삭제")
+                                let i: Int = IndexSet.first!
+                                UserDefaults.standard.set(moneyStore.money + (Int(moneyStore.spendMoneyHistory[i]) ?? 0), forKey: "총금액")
+                                moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
+
+                                UserDefaults.standard.set(moneyStore.todayMoney + (Int(moneyStore.spendMoneyHistory[i]) ?? 0), forKey: "오늘사용가능한돈")
+                                moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
+                                
+                                var tempMoneyArr: [String] = moneyStore.spendMoneyHistory
+                                tempMoneyArr.remove(at: i)
+                                UserDefaults.standard.set(tempMoneyArr, forKey: "사용한돈")
+                                moneyStore.spendMoneyHistory = UserDefaults.standard.array(forKey: "사용한돈") as? [String] ?? []
+
+                                var tempContentArr: [String] = moneyStore.spendContentsHistory
+                                tempContentArr.remove(at: i)
+                                UserDefaults.standard.set(tempContentArr, forKey: "사용내역")
+                                moneyStore.spendContentsHistory = UserDefaults.standard.array(forKey: "사용내역") as? [String] ?? []
+
+                                var tempMoneyHistory = moneyStore.moneyHistory
+                                tempMoneyHistory.remove(at: i)
+                                UserDefaults.standard.set(tempMoneyHistory, forKey: "돈히스토리")
+                                moneyStore.moneyHistory = UserDefaults.standard.array(forKey: "돈히스토리") as? [String] ?? []
+
+                                var tempContentHistory = moneyStore.contentHistory
+                                tempContentHistory.remove(at: i)
+                                UserDefaults.standard.set(tempContentHistory, forKey: "내역히스토리")
+                                moneyStore.contentHistory = UserDefaults.standard.array(forKey: "내역히스토리") as? [String] ?? []
                             }
                         }
-                        .onDelete { IndexSet in
-                            print("삭제")
-                            let i: Int = IndexSet.first!
-                            UserDefaults.standard.set(moneyStore.money + (Int(moneyStore.spendMoneyHistory[i]) ?? 0), forKey: "총금액")
-                            moneyStore.money = UserDefaults.standard.integer(forKey: "총금액")
-
-                            UserDefaults.standard.set(moneyStore.todayMoney + (Int(moneyStore.spendMoneyHistory[i]) ?? 0), forKey: "오늘사용가능한돈")
-                            moneyStore.todayMoney = UserDefaults.standard.integer(forKey: "오늘사용가능한돈")
-                            
-                            var tempMoneyArr: [String] = moneyStore.spendMoneyHistory
-                            tempMoneyArr.remove(at: i)
-                            UserDefaults.standard.set(tempMoneyArr, forKey: "사용한돈")
-                            moneyStore.spendMoneyHistory = UserDefaults.standard.array(forKey: "사용한돈") as? [String] ?? []
-
-                            var tempContentArr: [String] = moneyStore.spendContentsHistory
-                            tempContentArr.remove(at: i)
-                            UserDefaults.standard.set(tempContentArr, forKey: "사용내역")
-                            moneyStore.spendContentsHistory = UserDefaults.standard.array(forKey: "사용내역") as? [String] ?? []
-
-                            var tempMoneyHistory = moneyStore.moneyHistory
-                            tempMoneyHistory.remove(at: i)
-                            UserDefaults.standard.set(tempMoneyHistory, forKey: "돈히스토리")
-                            moneyStore.moneyHistory = UserDefaults.standard.array(forKey: "돈히스토리") as? [String] ?? []
-
-                            var tempContentHistory = moneyStore.contentHistory
-                            tempContentHistory.remove(at: i)
-                            UserDefaults.standard.set(tempContentHistory, forKey: "내역히스토리")
-                            moneyStore.contentHistory = UserDefaults.standard.array(forKey: "내역히스토리") as? [String] ?? []
-                        }
+                        .listStyle(.inset)
                     }
-                    .listStyle(.inset)
+                    
+                    
                 }
                 .padding()
             }
