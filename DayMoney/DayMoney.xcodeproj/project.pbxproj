@@ -27,6 +27,7 @@
 		EB5FC7F829AF266A00C644D5 /* TodayEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayEmptyView.swift; sourceTree = "<group>"; };
 		EB5FC7FA29AF27AF00C644D5 /* HistoryEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEmptyView.swift; sourceTree = "<group>"; };
 		EB5FC7FC29AF52AC00C644D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../AppIcons (6)/Assets.xcassets"; sourceTree = "<group>"; };
+		EB5FC7FE29AF788500C644D5 /* DayMoney.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayMoney.entitlements; sourceTree = "<group>"; };
 		EB8CE94029AC68210069D2D4 /* CurrentTimeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeTestView.swift; sourceTree = "<group>"; };
 		EB8CE94229ACA92C0069D2D4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		EBA0F2EC29A9FCAF00462046 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -78,6 +79,7 @@
 		EBDB49E129A9004600F8DE37 /* DayMoney */ = {
 			isa = PBXGroup;
 			children = (
+				EB5FC7FE29AF788500C644D5 /* DayMoney.entitlements */,
 				EB5FC7F529AE51D100C644D5 /* Info.plist */,
 				EBDB49E229A9004600F8DE37 /* DayMoneyApp.swift */,
 				EBA0F2F029AA033C00462046 /* MoneyStore.swift */,
@@ -334,6 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DayMoney/DayMoney.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DayMoney/Preview Content\"";
@@ -369,6 +372,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DayMoney/DayMoney.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DayMoney/Preview Content\"";
