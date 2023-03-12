@@ -10,7 +10,7 @@
 
 <br/>
 
-[![Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917](https://user-images.githubusercontent.com/75517368/222629665-471eb453-3b5c-4d19-ad48-0c6a8b81c9a0.svg)](https://github.com/APPSCHOOL1-REPO/finalproject-touche/blob/main/License) <img src="https://img.shields.io/badge/release-v1.0-FFF5EE"> 
+[![Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917](https://user-images.githubusercontent.com/75517368/222629665-471eb453-3b5c-4d19-ad48-0c6a8b81c9a0.svg)](https://apps.apple.com/kr/app/하룻-돈/id6445953298) <img src="https://img.shields.io/badge/release-v1.0-FFF5EE"> 
 
 <img src="https://user-images.githubusercontent.com/75517368/222629952-44cb60b0-43f2-4ab9-be6f-921333248403.png" width=120> <img src="https://user-images.githubusercontent.com/75517368/222629962-34fbb807-9e04-40a5-a03a-77a9e7d7a5dc.png" width=120> <img src="https://user-images.githubusercontent.com/75517368/222629968-2488ef44-4fb7-417a-af1d-eebece3a55c7.png" width=120> <img src="https://user-images.githubusercontent.com/75517368/222629972-f8f00614-6f18-4284-8f02-f9241ba7938e.png" width=120> <img src="https://user-images.githubusercontent.com/75517368/222629973-80b86947-7ed2-414d-a9f8-d21ba0db1c31.png" width=120>
 
