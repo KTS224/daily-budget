@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB11173F29E566B200CCC422 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB11173E29E566B100CCC422 /* Assets.xcassets */; };
 		EB5FC7F929AF266A00C644D5 /* TodayEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5FC7F829AF266A00C644D5 /* TodayEmptyView.swift */; };
 		EB5FC7FB29AF27AF00C644D5 /* HistoryEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5FC7FA29AF27AF00C644D5 /* HistoryEmptyView.swift */; };
-		EB5FC7FD29AF52AC00C644D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB5FC7FC29AF52AC00C644D5 /* Assets.xcassets */; };
 		EB8CE94129AC68210069D2D4 /* CurrentTimeTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8CE94029AC68210069D2D4 /* CurrentTimeTestView.swift */; };
 		EB8CE94329ACA92C0069D2D4 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8CE94229ACA92C0069D2D4 /* HistoryView.swift */; };
 		EBA0F2ED29A9FCAF00462046 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA0F2EC29A9FCAF00462046 /* CalendarView.swift */; };
@@ -23,10 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB11173E29E566B100CCC422 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Assets.xcassets; sourceTree = "<group>"; };
 		EB5FC7F529AE51D100C644D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EB5FC7F829AF266A00C644D5 /* TodayEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayEmptyView.swift; sourceTree = "<group>"; };
 		EB5FC7FA29AF27AF00C644D5 /* HistoryEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEmptyView.swift; sourceTree = "<group>"; };
-		EB5FC7FC29AF52AC00C644D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../AppIcons (6)/Assets.xcassets"; sourceTree = "<group>"; };
 		EB5FC7FE29AF788500C644D5 /* DayMoney.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DayMoney.entitlements; sourceTree = "<group>"; };
 		EB8CE94029AC68210069D2D4 /* CurrentTimeTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeTestView.swift; sourceTree = "<group>"; };
 		EB8CE94229ACA92C0069D2D4 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -84,10 +84,8 @@
 				EBDB49E229A9004600F8DE37 /* DayMoneyApp.swift */,
 				EBA0F2F029AA033C00462046 /* MoneyStore.swift */,
 				EB8CE93F29AC67E80069D2D4 /* TEST */,
-				EBDB49F129A901B600F8DE37 /* Models */,
 				EBDB49F029A901AD00F8DE37 /* Views */,
-				EBDB49F229A901BB00F8DE37 /* ViewModels */,
-				EB5FC7FC29AF52AC00C644D5 /* Assets.xcassets */,
+				EB11173E29E566B100CCC422 /* Assets.xcassets */,
 				EBDB49E829A9004600F8DE37 /* Preview Content */,
 			);
 			path = DayMoney;
@@ -114,20 +112,6 @@
 				EBA0F2F229AA048B00462046 /* AddReceiptView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		EBDB49F129A901B600F8DE37 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		EBDB49F229A901BB00F8DE37 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,7 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EBDB49EA29A9004600F8DE37 /* Preview Assets.xcassets in Resources */,
-				EB5FC7FD29AF52AC00C644D5 /* Assets.xcassets in Resources */,
+				EB11173F29E566B200CCC422 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
